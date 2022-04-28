@@ -8,14 +8,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// const users = [];
+const users = [];
 
 function checksExistsUserAccount(request, response, next) {
   // Complete aqui
 }
 
 app.post('/users', (request, response) => {
-  const { name, username } = resquest.body;
+  const { name, username } = request.body;
 
   const user = { 
     id: uuidv4(), 
@@ -23,6 +23,10 @@ app.post('/users', (request, response) => {
     username, 
     todos: []
   }
+
+  users.push(user);
+
+  return response.status(201).json(user);
 });
 
 app.get('/todos', checksExistsUserAccount, (request, response) => {
