@@ -11,7 +11,7 @@ app.use(express.json());
 const users = [];
 
 function checksExistsUserAccount(request, response, next) {
-  const { username } = request.headers;
+  const { username } = request.headers; 
 
   const user = users.find(user => user.username === username);
 
@@ -106,7 +106,7 @@ app.delete('/todos/:id', checksExistsUserAccount, (request, response) => {
 
   const todoIndex = user.todos.findIndex(todo => todo.id === id);
 
-  if (todo === -1) {
+  if (todoIndex === -1) {
     return response.status(404).json({ error: 'Todo not found' });
   }
 
